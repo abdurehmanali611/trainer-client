@@ -1,0 +1,369 @@
+{
+  "apiRoutes": [],
+  "htmlRoutes": [
+    {
+      "file": "./more/index.tsx",
+      "page": "/more/index",
+      "namedRegex": "^/more(?:/)?$",
+      "routeKeys": {},
+      "assets": {
+        "css": [],
+        "js": [
+          "/_expo/static/js/web/_layout-c7b092822c363752c23c62cdd0dfbf6a.js",
+          "/_expo/static/js/web/_layout-a193dad78adf58e266b1bf1ab51b9982.js"
+        ]
+      }
+    },
+    {
+      "file": "./(tabs)/index.tsx",
+      "page": "/(tabs)/index",
+      "namedRegex": "^(?:/\\(tabs\\))?(?:/)?$",
+      "routeKeys": {},
+      "assets": {
+        "css": [],
+        "js": [
+          "/_expo/static/js/web/_layout-c7b092822c363752c23c62cdd0dfbf6a.js",
+          "/_expo/static/js/web/_layout-e820e17566de8d0037675b48c45f4e6f.js",
+          "/_expo/static/js/web/index-98f6d57c6e4e2e5d889cd5463df1b2a2.js"
+        ]
+      }
+    },
+    {
+      "file": "./(tabs)/more.tsx",
+      "page": "/(tabs)/more",
+      "namedRegex": "^(?:/\\(tabs\\))?/more(?:/)?$",
+      "routeKeys": {},
+      "assets": {
+        "css": [],
+        "js": [
+          "/_expo/static/js/web/_layout-c7b092822c363752c23c62cdd0dfbf6a.js",
+          "/_expo/static/js/web/_layout-e820e17566de8d0037675b48c45f4e6f.js",
+          "/_expo/static/js/web/more-221787f3f3b06dc9779a8ca97b75abbc.js"
+        ]
+      }
+    },
+    {
+      "file": "./(tabs)/chat.tsx",
+      "page": "/(tabs)/chat",
+      "namedRegex": "^(?:/\\(tabs\\))?/chat(?:/)?$",
+      "routeKeys": {},
+      "assets": {
+        "css": [],
+        "js": [
+          "/_expo/static/js/web/_layout-c7b092822c363752c23c62cdd0dfbf6a.js",
+          "/_expo/static/js/web/_layout-e820e17566de8d0037675b48c45f4e6f.js",
+          "/_expo/static/js/web/chat-a6705de6672fb38a7b8070982d4093e2.js"
+        ]
+      }
+    },
+    {
+      "file": "./lock.tsx",
+      "page": "/lock",
+      "namedRegex": "^/lock(?:/)?$",
+      "routeKeys": {},
+      "assets": {
+        "css": [],
+        "js": [
+          "/_expo/static/js/web/_layout-c7b092822c363752c23c62cdd0dfbf6a.js",
+          "/_expo/static/js/web/lock-d003a6bba88156aebae49d21c1919d40.js"
+        ]
+      }
+    },
+    {
+      "file": "./more/water.tsx",
+      "page": "/more/water",
+      "namedRegex": "^/more/water(?:/)?$",
+      "routeKeys": {},
+      "assets": {
+        "css": [],
+        "js": [
+          "/_expo/static/js/web/_layout-c7b092822c363752c23c62cdd0dfbf6a.js",
+          "/_expo/static/js/web/_layout-a193dad78adf58e266b1bf1ab51b9982.js",
+          "/_expo/static/js/web/water-9f7f62be3bf21de9db3343d6fbd2eb5a.js"
+        ]
+      }
+    },
+    {
+      "file": "./more/diary.tsx",
+      "page": "/more/diary",
+      "namedRegex": "^/more/diary(?:/)?$",
+      "routeKeys": {},
+      "assets": {
+        "css": [],
+        "js": [
+          "/_expo/static/js/web/_layout-c7b092822c363752c23c62cdd0dfbf6a.js",
+          "/_expo/static/js/web/_layout-a193dad78adf58e266b1bf1ab51b9982.js",
+          "/_expo/static/js/web/diary-8cdaa1327ad1fb54a5537f1e6fdc4f1d.js"
+        ]
+      }
+    },
+    {
+      "file": "./auth/reset.tsx",
+      "page": "/auth/reset",
+      "namedRegex": "^/auth/reset(?:/)?$",
+      "routeKeys": {},
+      "assets": {
+        "css": [],
+        "js": [
+          "/_expo/static/js/web/_layout-c7b092822c363752c23c62cdd0dfbf6a.js",
+          "/_expo/static/js/web/_layout-3e857d423d803bb527f1706f0418cbd4.js",
+          "/_expo/static/js/web/reset-37d5cc02b3514512b0d03bbea4acb15b.js"
+        ]
+      }
+    },
+    {
+      "file": "./auth/login.tsx",
+      "page": "/auth/login",
+      "namedRegex": "^/auth/login(?:/)?$",
+      "routeKeys": {},
+      "assets": {
+        "css": [],
+        "js": [
+          "/_expo/static/js/web/_layout-c7b092822c363752c23c62cdd0dfbf6a.js",
+          "/_expo/static/js/web/_layout-3e857d423d803bb527f1706f0418cbd4.js",
+          "/_expo/static/js/web/login-5f050eafb9a16a2c9a225c7260e9a00f.js"
+        ]
+      }
+    },
+    {
+      "file": "./(tabs)/plans.tsx",
+      "page": "/(tabs)/plans",
+      "namedRegex": "^(?:/\\(tabs\\))?/plans(?:/)?$",
+      "routeKeys": {},
+      "assets": {
+        "css": [],
+        "js": [
+          "/_expo/static/js/web/_layout-c7b092822c363752c23c62cdd0dfbf6a.js",
+          "/_expo/static/js/web/_layout-e820e17566de8d0037675b48c45f4e6f.js",
+          "/_expo/static/js/web/plans-76b9612a11b00735f25dfd925c0e45f4.js"
+        ]
+      }
+    },
+    {
+      "file": "./more/photos.tsx",
+      "page": "/more/photos",
+      "namedRegex": "^/more/photos(?:/)?$",
+      "routeKeys": {},
+      "assets": {
+        "css": [],
+        "js": [
+          "/_expo/static/js/web/_layout-c7b092822c363752c23c62cdd0dfbf6a.js",
+          "/_expo/static/js/web/_layout-a193dad78adf58e266b1bf1ab51b9982.js",
+          "/_expo/static/js/web/photos-ab106d1a17a847834c19d92d5305b676.js"
+        ]
+      }
+    },
+    {
+      "file": "./more/records.tsx",
+      "page": "/more/records",
+      "namedRegex": "^/more/records(?:/)?$",
+      "routeKeys": {},
+      "assets": {
+        "css": [],
+        "js": [
+          "/_expo/static/js/web/_layout-c7b092822c363752c23c62cdd0dfbf6a.js",
+          "/_expo/static/js/web/_layout-a193dad78adf58e266b1bf1ab51b9982.js",
+          "/_expo/static/js/web/records-2dcbcbf56405159a12e45e20498a4592.js"
+        ]
+      }
+    },
+    {
+      "file": "./more/profile.tsx",
+      "page": "/more/profile",
+      "namedRegex": "^/more/profile(?:/)?$",
+      "routeKeys": {},
+      "assets": {
+        "css": [],
+        "js": [
+          "/_expo/static/js/web/_layout-c7b092822c363752c23c62cdd0dfbf6a.js",
+          "/_expo/static/js/web/_layout-a193dad78adf58e266b1bf1ab51b9982.js",
+          "/_expo/static/js/web/profile-6c9816b8a57328c48668457ca311d2a8.js"
+        ]
+      }
+    },
+    {
+      "file": "./more/billing.tsx",
+      "page": "/more/billing",
+      "namedRegex": "^/more/billing(?:/)?$",
+      "routeKeys": {},
+      "assets": {
+        "css": [],
+        "js": [
+          "/_expo/static/js/web/_layout-c7b092822c363752c23c62cdd0dfbf6a.js",
+          "/_expo/static/js/web/_layout-a193dad78adf58e266b1bf1ab51b9982.js",
+          "/_expo/static/js/web/billing-b328509d9a8bf1ec79e59deb795042ee.js"
+        ]
+      }
+    },
+    {
+      "file": "./more/feedback.tsx",
+      "page": "/more/feedback",
+      "namedRegex": "^/more/feedback(?:/)?$",
+      "routeKeys": {},
+      "assets": {
+        "css": [],
+        "js": [
+          "/_expo/static/js/web/_layout-c7b092822c363752c23c62cdd0dfbf6a.js",
+          "/_expo/static/js/web/_layout-a193dad78adf58e266b1bf1ab51b9982.js",
+          "/_expo/static/js/web/feedback-705e5fc3394c882cee90c65f48791a2c.js"
+        ]
+      }
+    },
+    {
+      "file": "./(tabs)/schedule.tsx",
+      "page": "/(tabs)/schedule",
+      "namedRegex": "^(?:/\\(tabs\\))?/schedule(?:/)?$",
+      "routeKeys": {},
+      "assets": {
+        "css": [],
+        "js": [
+          "/_expo/static/js/web/_layout-c7b092822c363752c23c62cdd0dfbf6a.js",
+          "/_expo/static/js/web/_layout-e820e17566de8d0037675b48c45f4e6f.js",
+          "/_expo/static/js/web/schedule-c8eb168e9d7227a670ec0cffb8645d76.js"
+        ]
+      }
+    },
+    {
+      "file": "expo-router/build/views/Sitemap.js",
+      "page": "/_sitemap",
+      "namedRegex": "^/_sitemap(?:/)?$",
+      "routeKeys": {},
+      "generated": true,
+      "assets": {
+        "css": [],
+        "js": [
+          "/_expo/static/js/web/_layout-c7b092822c363752c23c62cdd0dfbf6a.js"
+        ]
+      }
+    },
+    {
+      "file": "./more/measurements.tsx",
+      "page": "/more/measurements",
+      "namedRegex": "^/more/measurements(?:/)?$",
+      "routeKeys": {},
+      "assets": {
+        "css": [],
+        "js": [
+          "/_expo/static/js/web/_layout-c7b092822c363752c23c62cdd0dfbf6a.js",
+          "/_expo/static/js/web/_layout-a193dad78adf58e266b1bf1ab51b9982.js",
+          "/_expo/static/js/web/measurements-c597fb6f2df7db4bb549ef7eda8bf9f3.js"
+        ]
+      }
+    },
+    {
+      "file": "./more/achievements.tsx",
+      "page": "/more/achievements",
+      "namedRegex": "^/more/achievements(?:/)?$",
+      "routeKeys": {},
+      "assets": {
+        "css": [],
+        "js": [
+          "/_expo/static/js/web/_layout-c7b092822c363752c23c62cdd0dfbf6a.js",
+          "/_expo/static/js/web/_layout-a193dad78adf58e266b1bf1ab51b9982.js",
+          "/_expo/static/js/web/achievements-d5d07604008fc6c90aec3cebeb60d195.js"
+        ]
+      }
+    },
+    {
+      "file": "./more/notifications.tsx",
+      "page": "/more/notifications",
+      "namedRegex": "^/more/notifications(?:/)?$",
+      "routeKeys": {},
+      "assets": {
+        "css": [],
+        "js": [
+          "/_expo/static/js/web/_layout-c7b092822c363752c23c62cdd0dfbf6a.js",
+          "/_expo/static/js/web/_layout-a193dad78adf58e266b1bf1ab51b9982.js",
+          "/_expo/static/js/web/notifications-f769979fb8d8673cc9d8684bf6bdca93.js"
+        ]
+      }
+    },
+    {
+      "file": "./more/payment-portal.tsx",
+      "page": "/more/payment-portal",
+      "namedRegex": "^/more/payment\\-portal(?:/)?$",
+      "routeKeys": {},
+      "assets": {
+        "css": [],
+        "js": [
+          "/_expo/static/js/web/_layout-c7b092822c363752c23c62cdd0dfbf6a.js",
+          "/_expo/static/js/web/_layout-a193dad78adf58e266b1bf1ab51b9982.js",
+          "/_expo/static/js/web/payment-portal-0e61485d6da64051d7889161256d6bd4.js"
+        ]
+      }
+    },
+    {
+      "file": "./auth/forgot-password.tsx",
+      "page": "/auth/forgot-password",
+      "namedRegex": "^/auth/forgot\\-password(?:/)?$",
+      "routeKeys": {},
+      "assets": {
+        "css": [],
+        "js": [
+          "/_expo/static/js/web/_layout-c7b092822c363752c23c62cdd0dfbf6a.js",
+          "/_expo/static/js/web/_layout-3e857d423d803bb527f1706f0418cbd4.js",
+          "/_expo/static/js/web/forgot-password-fad3fb2a2019854315d5a015f1975b8d.js"
+        ]
+      }
+    },
+    {
+      "file": "./change-credential.tsx",
+      "page": "/change-credential",
+      "namedRegex": "^/change\\-credential(?:/)?$",
+      "routeKeys": {},
+      "assets": {
+        "css": [],
+        "js": [
+          "/_expo/static/js/web/_layout-c7b092822c363752c23c62cdd0dfbf6a.js",
+          "/_expo/static/js/web/change-credential-7b1e80d050b2ecfb28323760bfaadb1c.js"
+        ]
+      }
+    },
+    {
+      "file": "./workout/[id].tsx",
+      "page": "/workout/[id]",
+      "namedRegex": "^/workout/(?<id>[^/]+?)(?:/)?$",
+      "routeKeys": {
+        "id": "id"
+      },
+      "assets": {
+        "css": [],
+        "js": [
+          "/_expo/static/js/web/_layout-c7b092822c363752c23c62cdd0dfbf6a.js",
+          "/_expo/static/js/web/[id]-56bf5ce1f5d2975e83be80297dfd7152.js"
+        ]
+      }
+    }
+  ],
+  "notFoundRoutes": [
+    {
+      "file": "expo-router/build/views/Unmatched.js",
+      "page": "/+not-found",
+      "namedRegex": "^(?:/(?<notfound>.+?))?(?:/)?$",
+      "routeKeys": {
+        "notfound": "not-found"
+      },
+      "generated": true
+    }
+  ],
+  "redirects": [],
+  "rewrites": [],
+  "assets": {
+    "css": [
+      {
+        "type": "css",
+        "href": "/_expo/static/css/global-dac87f761a42565446dc550f919cb6d0.css"
+      }
+    ],
+    "js": [
+      "/_expo/static/js/web/__expo-metro-runtime-97703ae02682710149335928b974f18d.js",
+      "/_expo/static/js/web/__common-73801a13a948e0954953ad625b15a563.js",
+      "/_expo/static/js/web/entry-c921cf3ba799937edd7b5e6be2180a84.js"
+    ],
+    "favicon": "/favicon.ico"
+  },
+  "rendering": {
+    "mode": "ssr",
+    "file": "_expo/server/render.js"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "cli": {
+    "version": ">= 27.1.0",
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "env": {
+        "EXPO_PUBLIC_API_URL": "https://trainer-client-backend.vercel.app",
+        "EXPO_PUBLIC_CLOUDINARY_CLOUD_NAME": "vsn5lj8p",
+        "EXPO_PUBLIC_CLOUDINARY_PRESET_NAME": "trainer"
+      }
+    },
+    "preview": {
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      },
+      "env": {
+        "EXPO_PUBLIC_API_URL": "https://trainer-client-backend.vercel.app",
+        "EXPO_PUBLIC_CLOUDINARY_CLOUD_NAME": "vsn5lj8p",
+        "EXPO_PUBLIC_CLOUDINARY_PRESET_NAME": "trainer"
+      }
+    },
+    "production": {
+      "autoIncrement": true,
+      "env": {
+        "EXPO_PUBLIC_API_URL": "https://trainer-client-backend.vercel.app",
+        "EXPO_PUBLIC_CLOUDINARY_CLOUD_NAME": "vsn5lj8p",
+        "EXPO_PUBLIC_CLOUDINARY_PRESET_NAME": "trainer"
+      }
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}
