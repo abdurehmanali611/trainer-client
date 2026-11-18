@@ -44,8 +44,12 @@ export default function LoginScreen() {
       subtitle="Sign in with the OTP your trainer shared.">
       <Input
         placeholder="OTP code"
-        keyboardType="number-pad"
-        autoCapitalize="characters"
+        // OTPs are 10 chars of mixed-case letters, digits and symbols and are
+        // case-sensitive, so no digit-only keypad, no forced caps, no autocorrect.
+        autoCapitalize="none"
+        autoCorrect={false}
+        spellCheck={false}
+        autoComplete="off"
         value={otp}
         onChangeText={setOtp}
       />

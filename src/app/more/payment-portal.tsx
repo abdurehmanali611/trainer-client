@@ -165,7 +165,9 @@ export default function PaymentPortalScreen() {
             </Text>
             <Input
               placeholder="e.g. 852913476501"
-              autoCapitalize="characters"
+              autoCapitalize="none"
+              autoCorrect={false}
+              spellCheck={false}
               value={transactionId}
               onChangeText={(t) => {
                 setTransactionId(t);

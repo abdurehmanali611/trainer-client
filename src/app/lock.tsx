@@ -121,7 +121,9 @@ export default function LockScreen() {
 
           <Input
             placeholder="Transaction ID"
-            autoCapitalize="characters"
+            autoCapitalize="none"
+            autoCorrect={false}
+            spellCheck={false}
             value={transactionId}
             onChangeText={setTransactionId}
           />

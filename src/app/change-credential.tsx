@@ -10,27 +10,38 @@ import { api } from '@/lib/api';
 import { useAuth } from '@/lib/auth';
 
 export default function ChangeCredentialScreen() {
-  const { mustChangeCredential, setMustChangeCredential, signOut } = useAuth();
+  const { setMustChangeCredential, signOut } = useAuth();
   const router = useRouter();
   const [oldOtp, setOldOtp] = React.useState('');
   const [newOtp, setNewOtp] = React.useState('');
   const [confirmOtp, setConfirmOtp] = React.useState('');
   const [loading, setLoading] = React.useState(false);
 
-  React.useEffect(() => {
-    if (!mustChangeCredential) router.replace('/');
-  }, [mustChangeCredential, router]);
+  // One navigation only. The root layout also routes signed-in users away from
+  // this screen once `mustChangeCredential` clears, so a screen-level effect plus
+  // the explicit replace below used to fire three competing replaces and could
+  // leave the screen stuck. Only the already-changed case is handled here.
+  const done = React.useRef(false);
+  const goHome = React.useCallback(() => {
+    if (done.current) return;
+    done.current = true;
+    router.replace('/');
+  }, [router]);
 
   async function onSubmit() {
-    if (!oldOtp.trim() || !newOtp.trim() || !confirmOtp.trim()) {
+    if (loading || done.current) return;
+    const oldV = oldOtp.trim();
+    const newV = newOtp.trim();
+    const confirmV = confirmOtp.trim();
+    if (!oldV || !newV || !confirmV) {
       Alert.alert('Missing fields', 'Fill in all three fields.');
       return;
     }
-    if (newOtp !== confirmOtp) {
+    if (newV !== confirmV) {
       Alert.alert('Mismatch', 'New OTP and confirmation do not match.');
       return;
     }
-    if (newOtp.length < 6 || !/[A-Za-z]/.test(newOtp) || !/[0-9]/.test(newOtp)) {
+    if (newV.length < 6 || !/[A-Za-z]/.test(newV) || !/[0-9]/.test(newV)) {
       Alert.alert(
         'Weak OTP',
         'New OTP must be at least 6 characters and include both letters and digits.'
@@ -42,18 +53,20 @@ export default function ChangeCredentialScreen() {
       await api('auth/change-credential/', {
         method: 'POST',
         body: {
-          old_credential: oldOtp.trim(),
-          new_credential: newOtp,
-          confirm_credential: confirmOtp,
+          old_credential: oldV,
+          new_credential: newV,
+          confirm_credential: confirmV,
         },
       });
-      setMustChangeCredential(false);
-      router.replace('/');
     } catch (e) {
-      Alert.alert('Error', e instanceof Error ? e.message : 'Something went wrong.');
-    } finally {
       setLoading(false);
+      Alert.alert('Error', e instanceof Error ? e.message : 'Something went wrong.');
+      return;
     }
+    // Saved: clear the flag, then go Home once. The screen unmounts on navigation,
+    // so loading is deliberately left on to keep the button inert meanwhile.
+    setMustChangeCredential(false);
+    goHome();
   }
 
   return (
