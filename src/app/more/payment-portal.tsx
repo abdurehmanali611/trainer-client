@@ -10,6 +10,7 @@ import { Label } from '@/components/ui/label';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Text } from '@/components/ui/text';
 import { api, ApiError } from '@/lib/api';
+import { shortDate } from '@/lib/dates';
 import type { BillingPayload, PaymentChannel } from '@/lib/types';
 
 /** Feature 12: the payment channel is a radio group with exactly these three. */
@@ -115,8 +116,9 @@ export default function PaymentPortalScreen() {
         {requirement.required ? (
           <Text variant="muted">
             {requirement.source === 'period'
-              ? 'As set by your trainer for the current period.'
+              ? 'The reduced price your trainer set for the current period.'
               : 'Your standard payment instruction.'}
+            {requirement.grace_ends_on ? ` Pay by ${shortDate(requirement.grace_ends_on)}.` : ''}
           </Text>
         ) : null}
       </View>

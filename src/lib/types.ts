@@ -62,9 +62,25 @@ export interface PaymentRequirement {
   source: string;
   period_id: number | null;
   instruction_id: number | null;
-  /** Feature 11: days until the active period's final day (0 = last day),
-   *  null once no config covers today (instruction branch). */
+  /** Days until the active period's / cycle's final day (0 = last day). */
   days_left: number | null;
+  /** none | covered | upcoming | ask | grace | blocked */
+  phase?: 'none' | 'covered' | 'upcoming' | 'ask' | 'grace' | 'blocked';
+  /** paid | trial | discount | illustration | none */
+  kind?: string;
+  cycle_start?: string | null;
+  cycle_end?: string | null;
+  /** The day the money is due, the day the request opens, and the last day the
+   *  app stays open before an unpaid client is blocked. */
+  due_on?: string | null;
+  ask_opens_on?: string | null;
+  /** First day an unpaid client is blocked; `grace_ends_on` is the day before. */
+  blocked_from?: string | null;
+  grace_ends_on?: string | null;
+  next_due_on?: string | null;
+  next_ask_opens_on?: string | null;
+  /** A payment was submitted and is waiting for the trainer. */
+  awaiting_approval?: boolean;
 }
 
 export interface BillingPayload {

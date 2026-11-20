@@ -9,6 +9,7 @@ import {
   LoadingView,
   toneForInvoice,
 } from '@/components/screen';
+import { Chip, COLORS, Panel } from '@/components/kit';
 import { Button } from '@/components/ui/button';
 import { Icon } from '@/components/ui/icon';
 import { Text } from '@/components/ui/text';
@@ -100,69 +101,86 @@ export default function BillingScreen() {
       </View>
 
       {billing.active_period ? (
-        <View className="border-border mt-4 gap-1 rounded-xl border p-4">
-          <Text variant="h4">Active period</Text>
+        <Panel tint={billing.active_period.is_trial ? COLORS.violet : COLORS.amber} className="mt-4 gap-1">
+          <Text variant="h4">
+            {billing.active_period.is_trial ? 'Free trial' : 'Discount'}
+          </Text>
           <Text>
             {shortDate(billing.active_period.start_date)} – {shortDate(billing.active_period.end_date)}
           </Text>
-          {billing.active_period.package_name ? <Text variant="muted">{billing.active_period.package_name}</Text> : null}
           <Text variant="muted">
-            {billing.active_period.is_trial ? 'Trial' : `${billing.active_period.amount} ETB`}
+            {billing.active_period.is_trial
+              ? 'No payment is asked during the trial.'
+              : `You pay ${billing.active_period.amount} ETB for this period.`}
           </Text>
-        </View>
+        </Panel>
       ) : null}
 
-      {/* Feature 11: the warning state flips on the resolver's boundary —
-          it counts down while the config is live, then the period is gone
-          and the creation-time instruction applies automatically. */}
-      {billing.payment_requirement.days_left !== null &&
-      billing.payment_requirement.days_left <= 7 ? (
-        <View className="border-border mt-4 gap-1 rounded-xl border border-amber-500/40 bg-amber-500/10 p-4">
-          <Text variant="h4" className="text-amber-700 dark:text-amber-300">
-            {billing.payment_requirement.days_left <= 0
-              ? 'Your period ends today'
-              : `Your period ends in ${billing.payment_requirement.days_left} day${
-                  billing.payment_requirement.days_left === 1 ? '' : 's'
-                }`}
-          </Text>
-          <Text variant="muted">
-            After it ends you will be billed through your usual payment
-            instruction. Submit your payment to stay covered.
-          </Text>
-        </View>
-      ) : null}
-
-      {/* Feature 10: the resolver decides whether money is asked for at all. */}
-      {billing.payment_requirement.required ? (
-        <View className="border-border mt-4 gap-1 rounded-xl border p-4">
-          <View className="flex-row items-center justify-between">
-            <Text variant="h4">Amount due</Text>
-            <Badge label="Payment required" tone="warning" />
-          </View>
-          <Text className="font-semibold">
-            {billing.payment_requirement.amount ?? '—'} ETB
-          </Text>
-          <Text variant="muted">
-            {billing.payment_requirement.source === 'period'
-              ? 'As set by your trainer for the current period.'
-              : 'Your standard payment instruction.'}
-          </Text>
-        </View>
-      ) : (
-        <View className="border-border mt-4 gap-1 rounded-xl border p-4">
-          <View className="flex-row items-center justify-between">
-            <Text variant="h4">Payment</Text>
-            <Badge label="None due" tone="success" />
-          </View>
-          <Text variant="muted">
-            {billing.payment_requirement.source === 'trial'
-              ? 'You are on a free trial — no payment is required during this period.'
-              : billing.payment_requirement.source === 'paid'
-                ? 'This period is settled. Nothing to pay right now.'
-                : 'No payment is required right now.'}
-          </Text>
-        </View>
-      )}
+      {/* The payment timeline: when you will be asked, when it is due, and how
+          long the app stays open before an unpaid payment blocks it. */}
+      {(() => {
+        const r = billing.payment_requirement;
+        const phase = r.phase ?? 'none';
+        if (phase === 'ask' || phase === 'grace' || phase === 'blocked') {
+          const color = phase === 'ask' ? COLORS.amber : phase === 'grace' ? COLORS.orange : COLORS.rose;
+          return (
+            <Panel tint={color} className="mt-4 gap-1.5">
+              <Chip
+                label={phase === 'ask' ? 'Payment requested' : phase === 'grace' ? 'Payment overdue' : 'Payment required'}
+                color={color}
+              />
+              <Text variant="h4">{r.amount ?? '—'} ETB</Text>
+              {r.grace_ends_on && phase !== 'blocked' ? (
+                <Text>Pay by {shortDate(r.grace_ends_on)} to keep your access.</Text>
+              ) : null}
+              {r.blocked_from && phase !== 'blocked' ? (
+                <Text variant="muted">The app is locked from {shortDate(r.blocked_from)} until the payment is approved.</Text>
+              ) : null}
+              {phase === 'blocked' ? (
+                <Text variant="muted">Submit your payment to unlock the app.</Text>
+              ) : null}
+              {r.awaiting_approval ? (
+                <Text style={{ color: COLORS.cyan }}>Your payment was submitted and is waiting for your trainer.</Text>
+              ) : null}
+            </Panel>
+          );
+        }
+        if (phase === 'covered' || phase === 'upcoming') {
+          return (
+            <Panel tint={COLORS.green} className="mt-4 gap-1.5">
+              <Chip label={phase === 'covered' ? 'Paid up' : 'Nothing due yet'} color={COLORS.green} />
+              {r.next_due_on ? (
+                <Text variant="muted">
+                  Next payment due {shortDate(r.next_due_on)}
+                  {r.next_ask_opens_on ? ` — we will ask you from ${shortDate(r.next_ask_opens_on)}.` : '.'}
+                </Text>
+              ) : r.due_on ? (
+                <Text variant="muted">
+                  Payment due {shortDate(r.due_on)}
+                  {r.ask_opens_on ? ` — we will ask you from ${shortDate(r.ask_opens_on)}.` : '.'}
+                </Text>
+              ) : null}
+            </Panel>
+          );
+        }
+        if (r.source === 'trial') {
+          return (
+            <Panel tint={COLORS.violet} className="mt-4 gap-1">
+              <Chip label="Free trial" color={COLORS.violet} />
+              <Text variant="muted">
+                You are on a free trial — no payment is required
+                {r.cycle_end ? ` until ${shortDate(r.cycle_end)}` : ' during this period'}.
+              </Text>
+            </Panel>
+          );
+        }
+        return (
+          <Panel className="mt-4 gap-1">
+            <Chip label="None due" color={COLORS.muted} />
+            <Text variant="muted">No payment is required right now.</Text>
+          </Panel>
+        );
+      })()}
 
       {billing.invoice ? (
         <View className="border-border mt-4 gap-2 rounded-xl border p-4">
