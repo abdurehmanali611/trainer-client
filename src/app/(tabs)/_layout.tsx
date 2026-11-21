@@ -8,6 +8,7 @@ import {
   type LucideIcon,
 } from 'lucide-react-native';
 import { View, type ColorValue } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { alpha, COLORS } from '@/components/kit';
 import { Icon } from '@/components/ui/icon';
@@ -29,6 +30,8 @@ function TabIcon({ icon, color, focused }: { icon: LucideIcon; color: ColorValue
 
 export default function TabsLayout() {
   const unread = useUnreadChatCount();
+  const insets = useSafeAreaInsets();
+  const bottom = Math.max(insets.bottom, 8);
 
   return (
     <Tabs
@@ -41,9 +44,11 @@ export default function TabsLayout() {
           backgroundColor: '#0B1220',
           borderTopColor: alpha(COLORS.green, 0.16),
           borderTopWidth: 1,
-          // No fixed height: the navigator adds the bottom safe-area inset
-          // itself, so the bar clears the system navigation buttons.
+          // Explicit height + bottom inset so labels always clear the system
+          // navigation buttons (the navigator did not on edge-to-edge phones).
+          height: 60 + bottom,
           paddingTop: 6,
+          paddingBottom: bottom,
         },
         tabBarItemStyle: { paddingVertical: 2 },
         tabBarBadgeStyle: { backgroundColor: COLORS.rose, color: '#fff', fontSize: 10 },
