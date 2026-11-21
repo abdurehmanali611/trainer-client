@@ -209,7 +209,10 @@ export default function HomeScreen() {
   const name = client?.name?.split(' ')[0] ?? '';
   const access = data.billing.access;
   const invoice = data.billing.invoice;
-  const daysLeft = data.billing.payment_requirement.days_left;
+  // The warning only belongs to a payment that is actually still owed: once it
+  // is approved (or nothing is asked yet) `required` is false and it disappears.
+  const requirement = data.billing.payment_requirement;
+  const daysLeft = requirement.required && !requirement.awaiting_approval ? requirement.days_left : null;
   const invoicePending =
     invoice !== null && (invoice.status === 'pending' || invoice.status === 'overdue');
   const workout = data.today_workout;
